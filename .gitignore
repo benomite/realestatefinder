@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+sftp-config.json
+*.sqlite3

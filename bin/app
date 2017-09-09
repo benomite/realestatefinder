@@ -1,0 +1,10 @@
+#!/bin/env node
+"use strict";
+
+var dispatcher = require('../lib/dispatcher');
+
+
+
+dispatcher.dispatch(function() {
+  process.exit();
+});

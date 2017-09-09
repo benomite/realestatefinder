@@ -1,0 +1,42 @@
+#!/bin/env node
+"use strict";
+
+var sqlite3 = require('sqlite3').verbose();
+var async = require('async');
+var db;
+
+function createDb(cb) {
+  console.log("createDb");
+  db = new sqlite3.Database('realestatefinder.sqlite3', cb);
+}
+
+function createTable(cb) {
+  console.log("createTable visits");
+  var sql = "CREATE TABLE IF NOT EXISTS page (";
+  sql += "id INTEGER PRIMARY KEY ASC NOT NULL,";
+  sql += "url TEXT NOT NULL,";
+  sql += "type TEXT NOT NULL";
+  sql += ")";
+  db.run(sql, cb);
+}
+
+function closeDb(cb) {
+  console.log("closeDb");
+  db.close();
+  cb();
+}
+
+function run() {
+  async.waterfall([
+    createDb,
+    createTable,
+    closeDb,
+  ], function(err) {
+    if(err) {
+      console.error(err);
+    }
+    process.exit();
+  });
+}
+
+run();
