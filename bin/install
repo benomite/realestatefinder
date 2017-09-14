@@ -14,8 +14,7 @@ function createTable(cb) {
   console.log("createTable visits");
   var sql = "CREATE TABLE IF NOT EXISTS page (";
   sql += "id INTEGER PRIMARY KEY ASC NOT NULL,";
-  sql += "url TEXT NOT NULL,";
-  sql += "type TEXT NOT NULL";
+  sql += "url TEXT NOT NULL";
   sql += ")";
   db.run(sql, cb);
 }
