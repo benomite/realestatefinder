@@ -1,0 +1,8 @@
+'use strict';
+
+module.exports = {
+  smtp: {
+    user: 'plop',
+    password: 'plop',
+  }
+};
